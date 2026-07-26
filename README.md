@@ -1,44 +1,22 @@
-# Eolas Companion – Project Brief
+# Eolas Companion — Palworld Playtest Alpha 0.2
 
-## Vision
-**Play More. Research Less.**
+A mobile-first, offline-capable GitHub Pages build focused on one usable playtest loop: tracking Pals and discoveries in Windswept Hills.
 
-Eolas Companion is an accessibility-first adventure companion that helps players spend more time enjoying games and less time researching mechanics.
+## Upload from a phone
+1. Open the repository on GitHub.
+2. Upload the **contents of this folder** to the repository root.
+3. Commit the files.
+4. In **Settings → Pages**, deploy from the main branch and root folder.
+5. Open the Pages URL and refresh once. Use **Install** or your browser's **Add to Home screen** option.
 
-## Brand
-- Name: Eolas Companion
-- Landing: Choose Your Adventure
-- Logo concept: Compass with a North Star/sparkle as true north.
-- Default theme: North Star
+## Included
+- Eolas branding and North Star identity
+- “Choose Your Adventure” home screen
+- Journey Card with next suggested goals
+- 29-Pal Windswept Hills checklist
+- Starter fast-travel and Alpha markers
+- Local progress, export/import, offline caching
+- Themes and accessibility preferences
 
-## Core Principles
-- Simple
-- Guided
-- Accessible
-- Completion Friendly
-- Discovery over spoilers
-
-## Initial Navigation
-- Home
-- Adventure
-- Guide
-- Journey
-- Settings
-
-## Palworld Milestone 1
-- Complete Pal database (no typing)
-- Area-based progress
-- Journey Cards
-- Theme system
-- Accessibility settings
-- Offline support
-- Import/Export
-
-## Long-term Architecture
-Core Engine + Companion Packs (Palworld, Stardew Valley, Monster Hunter, No Man's Sky, etc.)
-
-## Product Manifesto
-We believe games should be explored—not researched.
-We believe players shouldn't need dozens of browser tabs.
-We believe completion should feel satisfying, not overwhelming.
-Every feature should help players spend more time playing and less time searching.
+## Known limitation
+This is intentionally a focused playtest build, not the complete Palworld dataset. Other regions are labeled as upcoming rather than presenting misleading empty checklists.
