@@ -1,22 +1,27 @@
-# Eolas Companion — Palworld Playtest Alpha 0.2
+# Eolas Companion — Palworld Alpha 0.5
 
-A mobile-first, offline-capable GitHub Pages build focused on one usable playtest loop: tracking Pals and discoveries in Windswept Hills.
+A mobile-first, installable GitHub Pages playtest build.
 
-## Upload from a phone
-1. Open the repository on GitHub.
-2. Upload the **contents of this folder** to the repository root.
-3. Commit the files.
-4. In **Settings → Pages**, deploy from the main branch and root folder.
-5. Open the Pages URL and refresh once. Use **Install** or your browser's **Add to Home screen** option.
+## What is new
 
-## Included
-- Eolas branding and North Star identity
-- “Choose Your Adventure” home screen
-- Journey Card with next suggested goals
-- 29-Pal Windswept Hills checklist
-- Starter fast-travel and Alpha markers
-- Local progress, export/import, offline caching
-- Themes and accessibility preferences
+- Rich Pal profiles with acquisition methods including wild/world encounters, fishing, Alpha bosses, dungeons or boss realms, eggs, and breeding.
+- Practical “Why capture this Pal?” guidance, work suitability, partner skills, drops, companion notes, and detailed progress tracking.
+- Optional Alpha Notebook on the Journey page.
+- Notebook entries remain in the browser's local storage and are included in full app backups.
+- Notebook can also be exported separately as Markdown.
 
-## Known limitation
-This is intentionally a focused playtest build, not the complete Palworld dataset. Other regions are labeled as upcoming rather than presenting misleading empty checklists.
+## Alpha Notebook privacy
+
+This is a static GitHub Pages app. The notebook is hidden by default and stored only on the current device, but it is not an authenticated secure account. Anyone using the same browser profile/device could open it after it is enabled. True private access would require authentication and a backend in a later release.
+
+## Upload to GitHub Pages
+
+Extract this ZIP and upload all files and folders from the extracted root to the root of the GitHub repository, replacing the existing app files. Keep `.nojekyll` and the `icons` folder.
+
+After deployment, close old tabs and reopen the site. If the previous PWA remains cached, refresh twice or remove and reinstall the PWA.
+
+
+## Alpha 0.5.1 layout fix
+- Removed the intentional card overlap between Choose Your Adventure and Current Journey.
+- Added a consistent 24px separation so both modules remain visually distinct on mobile.
+- Bumped the service-worker cache to force the corrected layout to load.
