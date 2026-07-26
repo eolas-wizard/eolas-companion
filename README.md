@@ -1,27 +1,52 @@
-# Eolas Companion — Palworld Alpha 0.5
+# Eolas Companion — Platform Alpha 0.6.0
 
-A mobile-first, installable GitHub Pages playtest build.
+**Play More. Research Less.**
 
-## What is new
+Eolas Companion is a mobile-first game companion platform. Palworld is the first reference Companion Pack rather than the identity of the application itself.
 
-- Rich Pal profiles with acquisition methods including wild/world encounters, fishing, Alpha bosses, dungeons or boss realms, eggs, and breeding.
-- Practical “Why capture this Pal?” guidance, work suitability, partner skills, drops, companion notes, and detailed progress tracking.
-- Optional Alpha Notebook on the Journey page.
-- Notebook entries remain in the browser's local storage and are included in full app backups.
-- Notebook can also be exported separately as Markdown.
+## Versioning
+
+- **Eolas Platform:** `0.6.0-alpha`
+- **Palworld Companion Pack:** `0.1.0-alpha`
+
+Platform releases cover shared navigation, progress, accessibility, offline support, notebooks, recommendations, and reusable UI. Companion Pack releases cover game-specific data and mechanics.
+
+## Repository structure
+
+```text
+/
+├── index.html
+├── manifest.webmanifest
+├── service-worker.js
+├── engine/
+│   ├── app.js
+│   └── styles.css
+├── games/
+│   └── palworld/
+│       ├── data.js
+│       └── manifest.json
+├── icons/
+├── docs/
+└── ALPHA_TEST_GUIDE.md
+```
+
+The root remains deployable directly through GitHub Pages. Existing local progress from Alpha 0.5 is migrated automatically.
+
+## Deploying the replacement structure
+
+Extract the ZIP and upload **everything inside the extracted folder** to the root of the renamed `eolas-companion` repository. Replace the existing files and keep `.nojekyll`.
+
+After GitHub Pages finishes deploying, fully close and reopen the site or installed PWA. Refresh twice if an older cached build appears.
 
 ## Alpha Notebook privacy
 
-This is a static GitHub Pages app. The notebook is hidden by default and stored only on the current device, but it is not an authenticated secure account. Anyone using the same browser profile/device could open it after it is enabled. True private access would require authentication and a backend in a later release.
+The notebook is optional, hidden by default, and stored only in the current browser profile. It is not authenticated. Export the notebook as Markdown when it is ready for sprint review.
 
-## Upload to GitHub Pages
+## Project documentation
 
-Extract this ZIP and upload all files and folders from the extracted root to the root of the GitHub repository, replacing the existing app files. Keep `.nojekyll` and the `icons` folder.
+Start with:
 
-After deployment, close old tabs and reopen the site. If the previous PWA remains cached, refresh twice or remove and reinstall the PWA.
-
-
-## Alpha 0.5.1 layout fix
-- Removed the intentional card overlap between Choose Your Adventure and Current Journey.
-- Added a consistent 24px separation so both modules remain visually distinct on mobile.
-- Bumped the service-worker cache to force the corrected layout to load.
+- [`docs/PRODUCT_VISION.md`](docs/PRODUCT_VISION.md)
+- [`docs/ROADMAP.md`](docs/ROADMAP.md)
+- [`docs/TEAM_CHARTER.md`](docs/TEAM_CHARTER.md)
+- [`docs/COMPANION_SPEC.md`](docs/COMPANION_SPEC.md)

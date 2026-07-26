@@ -1,7 +1,7 @@
 (() => {
   "use strict";
-  const KEY = "eolas-companion-alpha-05";
-  const legacyKeys = ["eolas-companion-alpha-04","eolas-companion-alpha-03","eolas-companion-alpha-02"];
+  const KEY = "eolas-companion-platform-alpha-06";
+  const legacyKeys = ["eolas-companion-alpha-05","eolas-companion-alpha-04","eolas-companion-alpha-03","eolas-companion-alpha-02"];
   const data = window.PALWORLD_DATA;
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -131,13 +131,13 @@
   function renderNotebook(){const root=$("#notebookEntries");if(!root)return;const entries=state.notebookEntries||[];root.innerHTML=entries.length?entries.map((n,i)=>`<article class="notebook-entry"><div class="notebook-entry-head"><div><strong>${esc(n.session||"Playtest observation")}</strong><small>${esc(new Date(n.createdAt).toLocaleString())}</small><span class="notebook-type">${esc(n.type)}</span></div><button class="notebook-delete" data-note-delete="${i}" aria-label="Delete observation">×</button></div><p><span>What happened</span>${esc(n.text)}</p>${n.help?`<p><span>What would have helped</span>${esc(n.help)}</p>`:""}</article>`).join(""):`<div class="notebook-empty">No observations yet. Add one during or immediately after a play session.</div>`;$$(`[data-note-delete]`,root).forEach(b=>b.addEventListener("click",()=>{state.notebookEntries.splice(Number(b.dataset.noteDelete),1);save();renderNotebook();toast("Observation deleted");}));}
   function renderJourney(){const t=totals();els.progressStats.innerHTML=statCard(t.percent+"%","Overall")+statCard(`${t.palDone}/${t.palTotal}`,"Pals");els.progressAreas.innerHTML=readyAreas().map(({name})=>{const s=stats(name);return`<div class="progress-area"><div><strong>${esc(name)}</strong><span>${s.done}/${s.total}</span></div><div class="progress-track"><div style="width:${s.percent}%"></div></div></div>`;}).join("");renderNotebook();}
   function renderAll(){renderPals();renderMarkers();renderHome();renderJourney();}
-  function switchView(view){$$('.view').forEach(x=>x.classList.toggle('active',x.id===view));$$('.bottom-nav button').forEach(x=>x.classList.toggle('active',x.dataset.view===view));window.scrollTo({top:0,behavior:state.reducedMotion?'auto':'smooth'});if(view==='homeView')renderHome();if(view==='adventureView')renderPals();if(view==='mapView')renderMarkers();if(view==='journeyView')renderJourney();}
+  function switchView(view){if(!els.palSheet.classList.contains("hidden"))closePalSheet();$$('.view').forEach(x=>x.classList.toggle('active',x.id===view));$$('.bottom-nav button').forEach(x=>x.classList.toggle('active',x.dataset.view===view));window.scrollTo({top:0,behavior:'auto'});if(view==='homeView')renderHome();if(view==='adventureView')renderPals();if(view==='mapView')renderMarkers();if(view==='journeyView')renderJourney();}
 
   $$('.bottom-nav button').forEach(b=>b.addEventListener('click',()=>switchView(b.dataset.view)));
   $$('[data-go]').forEach(b=>b.addEventListener('click',()=>switchView(b.dataset.go)));
   els.areaSelect.addEventListener('change',renderPals); els.mapAreaSelect.addEventListener('change',renderMarkers); els.markerFilter.addEventListener('change',renderMarkers); els.palSearch.addEventListener('input',renderPals);
-  ["largeText","reducedMotion","highContrast","alphaNotebookEnabled"].forEach(k=>$("#"+k).addEventListener("change",e=>{state[k]=e.target.checked;save();applyPrefs();renderJourney();if(k==="alphaNotebookEnabled")toast(e.target.checked?"Alpha Notebook enabled":"Alpha Notebook hidden");}));
-  $("#exportButton").addEventListener("click",()=>{const blob=new Blob([JSON.stringify({version:"alpha-0.5",exportedAt:new Date().toISOString(),state},null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="eolas-companion-backup.json";a.click();URL.revokeObjectURL(a.href);});
+  ["largeText","reducedMotion","highContrast","alphaNotebookEnabled"].forEach(k=>$("#"+k).addEventListener("change",e=>{state[k]=e.target.checked;save();applyPrefs();renderJourney();if(k==="alphaNotebookEnabled"){toast(e.target.checked?"Opening Alpha Notebook":"Alpha Notebook hidden");if(e.target.checked){switchView("journeyView");requestAnimationFrame(()=>setTimeout(()=>$("#alphaNotebookPanel")?.scrollIntoView({block:"start",behavior:"auto"}),40));}}}));
+  $("#exportButton").addEventListener("click",()=>{const blob=new Blob([JSON.stringify({version:"platform-alpha-0.6.0",pack:{id:"palworld",version:"0.1.0"},exportedAt:new Date().toISOString(),state},null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="eolas-companion-backup.json";a.click();URL.revokeObjectURL(a.href);});
   $("#importInput").addEventListener("change",async e=>{try{const p=JSON.parse(await e.target.files[0].text());state={...defaults,...p.state,checked:{...(p.state?.checked||{})},palProgress:{...(p.state?.palProgress||{})},notebookEntries:Array.isArray(p.state?.notebookEntries)?p.state.notebookEntries:[]};save();applyPrefs();setupControls();renderAll();toast("Backup imported");}catch{alert("That backup could not be imported.");}});
   $("#resetButton").addEventListener("click",()=>{if(confirm("Reset all Eolas progress on this device?")){state={...defaults,checked:{},palProgress:{},notebookEntries:[]};save();applyPrefs();setupControls();renderAll();toast("Progress reset");}});
 
@@ -146,7 +146,7 @@
   function toast(message){els.toast.textContent=message;els.toast.classList.remove("hidden");setTimeout(()=>els.toast.classList.add("hidden"),1800);}
   window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;els.installButton.classList.remove("hidden");});
   els.installButton.addEventListener("click",async()=>{if(installPrompt){installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;els.installButton.classList.add("hidden");}});
-  if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("service-worker.js?v=05"));
+  if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("service-worker.js?v=060"));
   $("#closePalSheet").addEventListener("click",closePalSheet); $("#sheetBackdrop").addEventListener("click",closePalSheet); document.addEventListener("keydown",e=>{if(e.key==="Escape")closePalSheet();});
   applyPrefs(); setupControls(); renderAll();
 })();
