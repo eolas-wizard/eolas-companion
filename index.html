@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta id="themeColorMeta" name="theme-color" content="#101827">
   <meta name="description" content="Eolas Companion: play more, research less.">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="icons/icon-192.png">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
-  <link rel="stylesheet" href="engine/styles.css?v=060">
+      <link rel="stylesheet" href="styles.css?v=053">
   <title>Eolas Companion</title>
 </head>
 <body>
@@ -18,7 +15,6 @@
       <div>
         <p class="eyebrow">EOLAS COMPANION</p>
         <h1>Palworld</h1>
-        <p class="pack-version">Companion Pack 0.1.0</p>
       </div>
     </div>
     <button id="installButton" class="icon-button hidden" type="button">Install</button>
@@ -86,17 +82,15 @@
       <div class="page-intro"><p class="section-label">YOUR JOURNEY</p><h2>Progress at a glance</h2></div>
       <div id="progressStats" class="stats-grid"></div>
       <section class="card"><h3>Completion by region</h3><div id="progressAreas" class="progress-area-list"></div></section>
-      <section id="alphaNotebookPanel" class="card notebook-panel hidden">
+      <section id="alphaNotebookPanel" class="card notebook-panel">
         <div class="section-heading"><div><p class="section-label">ALPHA NOTEBOOK</p><h3>Capture what happens while you play</h3></div><span class="privacy-badge">On this device</span></div>
         <p class="supporting-copy">Record friction, missing information, delightful moments, and the next question Eolas should answer.</p>
         <form id="notebookForm" class="notebook-form">
-          <div class="notebook-grid">
-            <label class="field"><span>Play session</span><input id="noteSession" type="text" placeholder="e.g. Session 4 · Level 18"></label>
-            <label class="field"><span>Flag type</span><div class="select-wrap"><select id="noteType"><option>Missing information</option><option>Usability</option><option>Incorrect information</option><option>Too many taps</option><option>Overwhelming</option><option>Trust concern</option><option>Delight</option><option>Next question</option><option>Other</option></select></div></label>
-          </div>
-          <label class="field"><span>What happened?</span><textarea id="noteText" rows="4" placeholder="Example: I opened Dumud and expected to see where it can be caught by fishing."></textarea></label>
-          <label class="field"><span>What would have helped?</span><textarea id="noteHelp" rows="3" placeholder="Describe what you expected Eolas to show or do."></textarea></label>
-          <div class="notebook-actions"><button class="primary-button" type="submit">Save observation</button><button id="exportNotebook" class="secondary-button" type="button">Export notebook</button></div>
+          <input id="noteSession" type="hidden" value="">
+          <input id="noteType" type="hidden" value="Observation">
+          <label class="field"><span>Observation</span><textarea id="noteText" rows="3" placeholder="What did you notice?"></textarea></label>
+          <input id="noteHelp" type="hidden" value="">
+          <div class="notebook-actions"><button class="primary-button" type="submit">Save note</button><button id="exportNotebook" class="secondary-button" type="button">Export notebook</button></div>
         </form>
         <div id="notebookEntries" class="notebook-entries"></div>
       </section>
@@ -106,13 +100,13 @@
     <section id="settingsView" class="view">
       <div class="page-intro"><p class="section-label">SETTINGS</p><h2>Make Eolas yours</h2></div>
       <section class="card"><h3>Theme</h3><p class="supporting-copy">Choose the mood that feels easiest to use while playing.</p><div id="themeGrid" class="theme-grid"></div></section>
-      <section class="card"><h3>Playtesting</h3><p class="supporting-copy">The Alpha Notebook is optional and hidden by default. Entries remain in this browser unless you export them.</p><label class="toggle-row"><span><strong>Enable Alpha Notebook</strong><small>Add a private, local playtest notebook to the Journey page.</small></span><input id="alphaNotebookEnabled" type="checkbox"><span class="switch" aria-hidden="true"></span></label></section>
+      
       <section class="card"><h3>Accessibility</h3>
         <label class="toggle-row"><span><strong>Large text</strong><small>Increase type size and touch targets.</small></span><input id="largeText" type="checkbox"><span class="switch" aria-hidden="true"></span></label>
         <label class="toggle-row"><span><strong>Reduced motion</strong><small>Remove smooth movement and transitions.</small></span><input id="reducedMotion" type="checkbox"><span class="switch" aria-hidden="true"></span></label>
         <label class="toggle-row"><span><strong>High contrast</strong><small>Strengthen borders and text contrast.</small></span><input id="highContrast" type="checkbox"><span class="switch" aria-hidden="true"></span></label>
       </section>
-      <section class="card release-note"><p class="section-label">PLAYTEST BUILD</p><h3>Platform Alpha 0.6.0</h3><p>Eolas platform transition, reusable project structure, and Palworld as the first Companion Pack.</p></section>
+      <section class="card release-note"><p class="section-label">PLAYTEST BUILD</p><h3>Alpha 0.5.3</h3><p>Stability hotfix and one-tap Alpha Notes.</p></section>
     </section>
   </main>
 
@@ -123,6 +117,16 @@
     <button data-view="journeyView"><span>◔</span><small>Journey</small></button>
     <button data-view="settingsView"><span>⚙</span><small>Settings</small></button>
   </nav>
+  <button id="quickNoteButton" class="quick-note-fab" type="button" aria-label="Add Alpha Note"><span>＋</span> Note</button>
+  <div id="quickNoteModal" class="quick-note-modal hidden" role="dialog" aria-modal="true" aria-labelledby="quickNoteTitle">
+    <button id="quickNoteBackdrop" class="quick-note-backdrop" aria-label="Close note"></button>
+    <section class="quick-note-card">
+      <div class="quick-note-head"><div><p class="section-label">ALPHA NOTE</p><h2 id="quickNoteTitle">What did you notice?</h2></div><button id="quickNoteClose" class="sheet-close" type="button" aria-label="Close">×</button></div>
+      <p id="quickNoteContext" class="quick-note-context"></p>
+      <textarea id="quickNoteText" rows="4" placeholder="Example: Beegarde is missing its Pal number."></textarea>
+      <div class="quick-note-actions"><button id="quickNoteSave" class="primary-button" type="button">Save note</button></div>
+    </section>
+  </div>
   <div id="palSheet" class="sheet hidden" role="dialog" aria-modal="true" aria-labelledby="palSheetTitle">
     <button id="sheetBackdrop" class="sheet-backdrop" aria-label="Close Pal details"></button>
     <article class="sheet-panel">
@@ -132,5 +136,5 @@
     </article>
   </div>
   <div id="toast" class="toast hidden" role="status"></div>
-  <script src="games/palworld/data.js?v=060"></script><script src="engine/app.js?v=060"></script>
+  <script src="data.js?v=053"></script><script src="app.js?v=053"></script>
 </body></html>

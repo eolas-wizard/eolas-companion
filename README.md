@@ -1,52 +1,11 @@
-# Eolas Companion — Platform Alpha 0.6.0
+# Eolas Companion — Alpha 0.5.3 Hotfix
 
-**Play More. Research Less.**
+Stable flat-file mobile release. Upload every file and the `icons` folder to the repository root.
 
-Eolas Companion is a mobile-first game companion platform. Palworld is the first reference Companion Pack rather than the identity of the application itself.
-
-## Versioning
-
-- **Eolas Platform:** `0.6.0-alpha`
-- **Palworld Companion Pack:** `0.1.0-alpha`
-
-Platform releases cover shared navigation, progress, accessibility, offline support, notebooks, recommendations, and reusable UI. Companion Pack releases cover game-specific data and mechanics.
-
-## Repository structure
-
-```text
-/
-├── index.html
-├── manifest.webmanifest
-├── service-worker.js
-├── engine/
-│   ├── app.js
-│   └── styles.css
-├── games/
-│   └── palworld/
-│       ├── data.js
-│       └── manifest.json
-├── icons/
-├── docs/
-└── ALPHA_TEST_GUIDE.md
-```
-
-The root remains deployable directly through GitHub Pages. Existing local progress from Alpha 0.5 is migrated automatically.
-
-## Deploying the replacement structure
-
-Extract the ZIP and upload **everything inside the extracted folder** to the root of the renamed `eolas-companion` repository. Replace the existing files and keep `.nojekyll`.
-
-After GitHub Pages finishes deploying, fully close and reopen the site or installed PWA. Refresh twice if an older cached build appears.
-
-## Alpha Notebook privacy
-
-The notebook is optional, hidden by default, and stored only in the current browser profile. It is not authenticated. Export the notebook as Markdown when it is ready for sprint review.
-
-## Project documentation
-
-Start with:
-
-- [`docs/PRODUCT_VISION.md`](docs/PRODUCT_VISION.md)
-- [`docs/ROADMAP.md`](docs/ROADMAP.md)
-- [`docs/TEAM_CHARTER.md`](docs/TEAM_CHARTER.md)
-- [`docs/COMPANION_SPEC.md`](docs/COMPANION_SPEC.md)
+## Changes
+- Restores the last stable Alpha 0.5.2 application baseline.
+- Adds a persistent **+ Note** button available from every screen.
+- Notes need only one text field; context is captured automatically.
+- Alpha Notebook is always available on Journey and no longer requires Settings.
+- Adds Beegarde Pal No. 050.
+- Unregisters older service workers and clears stale Eolas caches to prevent mixed-version breakage.

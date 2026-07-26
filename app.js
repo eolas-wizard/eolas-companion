@@ -1,7 +1,7 @@
 (() => {
   "use strict";
-  const KEY = "eolas-companion-platform-alpha-06";
-  const legacyKeys = ["eolas-companion-alpha-05","eolas-companion-alpha-04","eolas-companion-alpha-03","eolas-companion-alpha-02"];
+  const KEY = "eolas-companion-alpha-05";
+  const legacyKeys = ["eolas-companion-alpha-04","eolas-companion-alpha-03","eolas-companion-alpha-02"];
   const data = window.PALWORLD_DATA;
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -13,7 +13,7 @@
     {id:"blossom",name:"Blossom",note:"Soft pink",a:"#bb5792",b:"#d783af"},
     {id:"night",name:"Night Sky",note:"Deep dark",a:"#34355f",b:"#8c86ff"}
   ];
-  const defaults = {checked:{},palProgress:{},notebookEntries:[],alphaNotebookEnabled:false,lastArea:"Windswept Hills",theme:"north-star",largeText:false,reducedMotion:false,highContrast:false};
+  const defaults = {checked:{},palProgress:{},notebookEntries:[],alphaNotebookEnabled:true,lastArea:"Windswept Hills",theme:"north-star",largeText:false,reducedMotion:false,highContrast:false};
   let saved = null;
   try { saved = JSON.parse(localStorage.getItem(KEY) || "null"); } catch {}
   if (!saved) for (const k of legacyKeys) { try { const x = JSON.parse(localStorage.getItem(k)||"null"); if(x){ saved=x; break; } } catch {} }
@@ -31,8 +31,8 @@
     document.documentElement.classList.toggle("large-text",state.largeText);
     document.documentElement.classList.toggle("reduced-motion",state.reducedMotion);
     document.documentElement.classList.toggle("high-contrast",state.highContrast);
-    ["largeText","reducedMotion","highContrast","alphaNotebookEnabled"].forEach(k=>{const el=$("#"+k);if(el)el.checked=!!state[k];});
-    const notebookPanel=$("#alphaNotebookPanel"); if(notebookPanel) notebookPanel.classList.toggle("hidden",!state.alphaNotebookEnabled);
+    ["largeText","reducedMotion","highContrast"].forEach(k=>{const el=$("#"+k);if(el)el.checked=!!state[k];});
+    const notebookPanel=$("#alphaNotebookPanel"); if(notebookPanel) notebookPanel.classList.remove("hidden");
     const meta=$("#themeColorMeta"); if(meta) meta.content=getComputedStyle(document.documentElement).getPropertyValue("--bg").trim()||"#101827";
   }
 
@@ -136,17 +136,39 @@
   $$('.bottom-nav button').forEach(b=>b.addEventListener('click',()=>switchView(b.dataset.view)));
   $$('[data-go]').forEach(b=>b.addEventListener('click',()=>switchView(b.dataset.go)));
   els.areaSelect.addEventListener('change',renderPals); els.mapAreaSelect.addEventListener('change',renderMarkers); els.markerFilter.addEventListener('change',renderMarkers); els.palSearch.addEventListener('input',renderPals);
-  ["largeText","reducedMotion","highContrast","alphaNotebookEnabled"].forEach(k=>$("#"+k).addEventListener("change",e=>{state[k]=e.target.checked;save();applyPrefs();renderJourney();if(k==="alphaNotebookEnabled"){toast(e.target.checked?"Opening Alpha Notebook":"Alpha Notebook hidden");if(e.target.checked){switchView("journeyView");requestAnimationFrame(()=>setTimeout(()=>$("#alphaNotebookPanel")?.scrollIntoView({block:"start",behavior:"auto"}),40));}}}));
-  $("#exportButton").addEventListener("click",()=>{const blob=new Blob([JSON.stringify({version:"platform-alpha-0.6.0",pack:{id:"palworld",version:"0.1.0"},exportedAt:new Date().toISOString(),state},null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="eolas-companion-backup.json";a.click();URL.revokeObjectURL(a.href);});
+  ["largeText","reducedMotion","highContrast"].forEach(k=>$("#"+k).addEventListener("change",e=>{state[k]=e.target.checked;save();applyPrefs();renderJourney();}));
+  $("#exportButton").addEventListener("click",()=>{const blob=new Blob([JSON.stringify({version:"alpha-0.5",exportedAt:new Date().toISOString(),state},null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="eolas-companion-backup.json";a.click();URL.revokeObjectURL(a.href);});
   $("#importInput").addEventListener("change",async e=>{try{const p=JSON.parse(await e.target.files[0].text());state={...defaults,...p.state,checked:{...(p.state?.checked||{})},palProgress:{...(p.state?.palProgress||{})},notebookEntries:Array.isArray(p.state?.notebookEntries)?p.state.notebookEntries:[]};save();applyPrefs();setupControls();renderAll();toast("Backup imported");}catch{alert("That backup could not be imported.");}});
   $("#resetButton").addEventListener("click",()=>{if(confirm("Reset all Eolas progress on this device?")){state={...defaults,checked:{},palProgress:{},notebookEntries:[]};save();applyPrefs();setupControls();renderAll();toast("Progress reset");}});
 
   $("#notebookForm").addEventListener("submit",e=>{e.preventDefault();const text=$("#noteText").value.trim();if(!text){toast("Describe what happened first");return;}state.notebookEntries.unshift({createdAt:new Date().toISOString(),session:$("#noteSession").value.trim(),type:$("#noteType").value,text,help:$("#noteHelp").value.trim()});save();e.target.reset();renderNotebook();toast("Observation saved");});
   $("#exportNotebook").addEventListener("click",()=>{const lines=["# Eolas Alpha Notebook","",`Exported: ${new Date().toLocaleString()}`,""];(state.notebookEntries||[]).forEach((n,i)=>{lines.push(`## ${i+1}. ${n.session||"Playtest observation"}`,`- Date: ${new Date(n.createdAt).toLocaleString()}`,`- Flag: ${n.type}`,"",`**What happened**`,"",n.text,"",`**What would have helped**`,"",n.help||"—","");});const blob=new Blob([lines.join("\n")],{type:"text/markdown"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="eolas-alpha-notebook.md";a.click();URL.revokeObjectURL(a.href);});
+  let currentContext = "General app observation";
+  function noteContext(){
+    const openPal = !els.palSheet.classList.contains("hidden") ? els.palSheetContent.querySelector("h2")?.textContent : "";
+    if(openPal) return `Pal: ${openPal}`;
+    const active = document.querySelector(".view.active")?.id || "homeView";
+    return ({homeView:"Home",adventureView:`Adventure · ${state.lastArea}`,mapView:`Discoveries · ${state.lastArea}`,journeyView:"Journey",settingsView:"Settings"})[active] || "Eolas";
+  }
+  function openQuickNote(prefill=""){
+    currentContext=noteContext();
+    $("#quickNoteContext").textContent=currentContext;
+    $("#quickNoteText").value=prefill;
+    $("#quickNoteModal").classList.remove("hidden");
+    document.body.classList.add("quick-note-open");
+    setTimeout(()=>$("#quickNoteText").focus(),30);
+  }
+  function closeQuickNote(){$("#quickNoteModal").classList.add("hidden");document.body.classList.remove("quick-note-open");}
+  $("#quickNoteButton").addEventListener("click",()=>openQuickNote());
+  $("#quickNoteClose").addEventListener("click",closeQuickNote);
+  $("#quickNoteBackdrop").addEventListener("click",closeQuickNote);
+  $("#quickNoteSave").addEventListener("click",()=>{const text=$("#quickNoteText").value.trim();if(!text){toast("Write a quick note first");return;}state.notebookEntries.unshift({createdAt:new Date().toISOString(),session:currentContext,type:"Observation",text,help:""});save();renderNotebook();closeQuickNote();toast("Alpha Note saved");});
+
   function toast(message){els.toast.textContent=message;els.toast.classList.remove("hidden");setTimeout(()=>els.toast.classList.add("hidden"),1800);}
   window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;els.installButton.classList.remove("hidden");});
   els.installButton.addEventListener("click",async()=>{if(installPrompt){installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;els.installButton.classList.add("hidden");}});
-  if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("service-worker.js?v=060"));
+  if("serviceWorker" in navigator) navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});
+  if("caches" in window) caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith("eolas")).map(k=>caches.delete(k)))).catch(()=>{});
   $("#closePalSheet").addEventListener("click",closePalSheet); $("#sheetBackdrop").addEventListener("click",closePalSheet); document.addEventListener("keydown",e=>{if(e.key==="Escape")closePalSheet();});
   applyPrefs(); setupControls(); renderAll();
 })();
