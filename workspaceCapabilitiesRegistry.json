@@ -1,0 +1,161 @@
+{
+  "$schema": "./schema.json",
+  "version": "1.0.0",
+  "budgetLimit": 12000,
+  "capabilities": [
+    {
+      "id": "core-guidelines",
+      "description": "Essential workspace conventions, agent preferences, context hygiene",
+      "tier": "core",
+      "triggers": [],
+      "prerequisites": [],
+      "tokenEstimate": 600,
+      "source": "CLAUDE.md",
+      "autoLoad": true
+    },
+    {
+      "id": "code-robustness-reviewer",
+      "description": "PR review, SOLID analysis, type safety, defensive programming checks",
+      "tier": "advanced",
+      "triggers": ["review", "pr", "code quality", "solid", "type safety", "defensive"],
+      "prerequisites": [],
+      "tokenEstimate": 6750,
+      "source": ".claude/agents/code-robustness-reviewer.md",
+      "autoLoad": false
+    },
+    {
+      "id": "test-writer",
+      "description": "Generate comprehensive tests with edge cases for functions/modules",
+      "tier": "domain",
+      "triggers": ["test", "coverage", "unit test", "integration test", "write tests"],
+      "prerequisites": [],
+      "tokenEstimate": 1415,
+      "source": ".claude/agents/test-writer.md",
+      "autoLoad": false
+    },
+    {
+      "id": "refactor-advisor",
+      "description": "Identify refactoring opportunities, reduce duplication, improve readability",
+      "tier": "domain",
+      "triggers": ["refactor", "simplify", "duplication", "clean up", "restructure"],
+      "prerequisites": [],
+      "tokenEstimate": 1479,
+      "source": ".claude/agents/refactor-advisor.md",
+      "autoLoad": false
+    },
+    {
+      "id": "doc-updater",
+      "description": "Update project documentation after features or changes",
+      "tier": "domain",
+      "triggers": ["docs", "readme", "documentation", "update docs", "changelog"],
+      "prerequisites": [],
+      "tokenEstimate": 3410,
+      "source": ".claude/agents/doc-updater.md",
+      "autoLoad": false
+    },
+    {
+      "id": "project-scaffolder",
+      "description": "Set up new projects with proper structure and configuration",
+      "tier": "advanced",
+      "triggers": ["new project", "scaffold", "bootstrap", "create project", "init"],
+      "prerequisites": [],
+      "tokenEstimate": 909,
+      "source": ".claude/agents/project-scaffolder.md",
+      "autoLoad": false
+    },
+    {
+      "id": "code-committer",
+      "description": "Commit workflow: quality checks, fixes, changelog, commit message",
+      "tier": "domain",
+      "triggers": ["commit", "git commit", "/commit"],
+      "prerequisites": [],
+      "tokenEstimate": 1614,
+      "source": ".claude/agents/code-committer.md",
+      "autoLoad": false
+    },
+    {
+      "id": "backlog-curator",
+      "description": "Manage project backlog, prioritize items, groom tickets",
+      "tier": "domain",
+      "triggers": ["backlog", "ticket", "issue", "prioritize", "groom"],
+      "prerequisites": [],
+      "tokenEstimate": 1170,
+      "source": ".claude/agents/backlog-curator.md",
+      "autoLoad": false
+    },
+    {
+      "id": "log-error",
+      "description": "Log failures for learning - prompting habits, context issues",
+      "tier": "domain",
+      "triggers": ["error", "mistake", "wrong", "failed", "log error"],
+      "prerequisites": [],
+      "tokenEstimate": 1099,
+      "source": ".claude/commands/logging/log-error.md",
+      "autoLoad": false
+    },
+    {
+      "id": "log-success",
+      "description": "Capture successful patterns - first-try wins, elegant solutions",
+      "tier": "domain",
+      "triggers": ["success", "worked", "log success", "first try"],
+      "prerequisites": [],
+      "tokenEstimate": 993,
+      "source": ".claude/commands/logging/log-success.md",
+      "autoLoad": false
+    },
+    {
+      "id": "handoff",
+      "description": "Context management before clearing, compacting, or ending sessions",
+      "tier": "domain",
+      "triggers": ["handoff", "clear", "compact", "end session", "session end"],
+      "prerequisites": [],
+      "tokenEstimate": 1116,
+      "source": ".claude/commands/workflow/handoff.md",
+      "autoLoad": false
+    },
+    {
+      "id": "project-reflection",
+      "description": "Deep project analysis, architecture review, improvement suggestions",
+      "tier": "advanced",
+      "triggers": ["reflect", "analyze project", "architecture review", "project review"],
+      "prerequisites": [],
+      "tokenEstimate": 2252,
+      "source": ".claude/commands/project-reflection.md",
+      "autoLoad": false
+    },
+    {
+      "id": "feature-workshop",
+      "description": "Collaborative feature ideation with SCRUM personas, backlog creation",
+      "tier": "advanced",
+      "triggers": ["feature ideation", "brainstorm", "scrum", "backlog ticket"],
+      "prerequisites": [],
+      "tokenEstimate": 2522,
+      "source": ".claude/agents/feature-workshop.md",
+      "autoLoad": false
+    },
+    {
+      "id": "plan-sync",
+      "description": "Update plan documents after completing work, sync with CHANGELOG/Issues",
+      "tier": "domain",
+      "triggers": ["plan sync", "plan update", "completed work", "plan document"],
+      "prerequisites": [],
+      "tokenEstimate": 1550,
+      "source": ".claude/agents/plan-sync.md",
+      "autoLoad": false
+    }
+  ],
+  "mcpServers": [
+    {
+      "id": "mcp-github",
+      "name": "github",
+      "description": "GitHub API access for issues, PRs, repositories",
+      "configKey": "github"
+    },
+    {
+      "id": "mcp-context7",
+      "name": "context7",
+      "description": "Up-to-date framework documentation lookup",
+      "configKey": "context7"
+    }
+  ]
+}
