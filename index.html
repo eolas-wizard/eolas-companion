@@ -1,13 +1,112 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta id="themeColorMeta" name="theme-color" content="#101c2d"><meta name="description" content="Eolas Companion: play more, research less."><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/icon-192.png"><link rel="stylesheet" href="styles.css"><title>Eolas Companion</title></head>
-<body><header class="app-header"><div class="brand-mark" aria-hidden="true">✦</div><div><p class="eyebrow">EOLAS COMPANION</p><h1 id="pageTitle">Palworld</h1><p id="headerContext" class="header-context">Play more. Research less.</p></div><button id="installButton" class="header-button hidden" type="button">Install</button></header>
-<main>
-<section id="homeView" class="view active"><div class="hero-card"><div><p class="eyebrow dark">CHOOSE YOUR ADVENTURE</p><h2>Continue Palworld</h2><p>Your progress stays on this device and works offline after the first load.</p></div><div class="northstar">✦</div></div>
-<section class="panel journey-card"><div class="panel-heading"><div><p class="eyebrow dark">CURRENT JOURNEY</p><h2 id="journeyArea">Windswept Hills</h2></div><strong id="journeyPercent">0%</strong></div><div class="progress-track big"><div id="journeyFill"></div></div><div id="nextGoals" class="goal-list"></div><button class="primary-button full" data-go="adventureView">Continue Adventure</button></section>
-<div id="homeStats" class="stats-grid"></div>
-<section class="panel"><div class="panel-heading"><div><p class="eyebrow dark">REGIONS</p><h2>Your journey</h2></div></div><div id="areaCards" class="area-card-list"></div></section></section>
-<section id="adventureView" class="view"><div class="sticky-tools"><label class="control"><span>Region</span><select id="areaSelect"></select></label><label class="search-control"><span class="sr-only">Search Pals</span><input id="palSearch" type="search" placeholder="Search this region" autocomplete="off"></label><div class="area-progress"><div><strong id="areaProgressLabel">0 of 0 caught</strong><span id="areaPercent">0%</span></div><div class="progress-track"><div id="areaProgressFill"></div></div></div></div><div class="panel-heading list-heading"><div><p class="eyebrow dark">REGION CHECKLIST</p><h2 id="palsTitle">Pals</h2></div></div><div id="palList" class="check-list"></div></section>
-<section id="mapView" class="view"><div class="sticky-tools two-column"><label class="control"><span>Region</span><select id="mapAreaSelect"></select></label><label class="control"><span>Marker type</span><select id="markerFilter"></select></label></div><div class="panel-heading list-heading"><div><p class="eyebrow dark">DISCOVERY LOG</p><h2>Places & discoveries</h2></div></div><div id="markerList" class="check-list"></div></section>
-<section id="journeyView" class="view"><div class="panel-heading"><div><p class="eyebrow dark">YOUR JOURNEY</p><h2>Progress</h2></div></div><div id="progressStats" class="stats-grid"></div><section class="panel"><h2>Completion by region</h2><div id="progressAreas" class="progress-area-list"></div></section><section class="panel settings-panel"><h2>Save data</h2><p>Export a backup before clearing browser data or switching devices.</p><div class="button-stack"><button id="exportButton" class="secondary-button">Export backup</button><label class="secondary-button file-button">Import backup<input id="importInput" type="file" accept="application/json"></label><button id="resetButton" class="danger-button">Reset progress</button></div></section></section>
-<section id="settingsView" class="view"><section class="panel"><p class="eyebrow dark">APPEARANCE</p><h2>Theme</h2><div id="themeGrid" class="theme-grid"></div></section><section class="panel"><p class="eyebrow dark">ACCESSIBILITY</p><h2>Make Eolas comfortable</h2><label class="toggle-row"><span><strong>Large text</strong><small>Increase text and touch targets.</small></span><input id="largeText" type="checkbox"></label><label class="toggle-row"><span><strong>Reduced motion</strong><small>Disable smooth movement and transitions.</small></span><input id="reducedMotion" type="checkbox"></label><label class="toggle-row"><span><strong>High contrast</strong><small>Strengthen borders and text contrast.</small></span><input id="highContrast" type="checkbox"></label></section><section class="panel"><p class="eyebrow dark">PLAYTEST BUILD</p><h2>Alpha 0.2</h2><p>This build focuses on the Windswept Hills journey loop. Other regions appear as upcoming rather than empty checklists.</p></section></section>
-</main>
-<nav class="bottom-nav"><button class="active" data-view="homeView"><span>✦</span>Home</button><button data-view="adventureView"><span>🧭</span>Adventure</button><button data-view="mapView"><span>⌖</span>Map</button><button data-view="journeyView"><span>◔</span>Journey</button><button data-view="settingsView"><span>⚙</span>Settings</button></nav><div id="toast" class="toast hidden" role="status"></div><script src="data.js"></script><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="en" data-theme="north-star">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta id="themeColorMeta" name="theme-color" content="#101827">
+  <meta name="description" content="Eolas Companion: play more, research less.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css?v=03">
+  <title>Eolas Companion</title>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand-lockup">
+      <div class="brand-mark" aria-hidden="true"><span>✦</span></div>
+      <div>
+        <p class="eyebrow">EOLAS COMPANION</p>
+        <h1>Palworld</h1>
+      </div>
+    </div>
+    <button id="installButton" class="icon-button hidden" type="button">Install</button>
+  </header>
+
+  <main>
+    <section id="homeView" class="view active">
+      <div class="hero-card">
+        <div>
+          <p class="eyebrow">CHOOSE YOUR ADVENTURE</p>
+          <h2>Ready to continue?</h2>
+          <p>Pick up where you left off without leaving the game to search.</p>
+        </div>
+        <div class="northstar" aria-hidden="true">✦</div>
+      </div>
+
+      <section class="card journey-card">
+        <div class="journey-topline">
+          <div>
+            <p class="section-label">CURRENT JOURNEY</p>
+            <h2 id="journeyArea">Windswept Hills</h2>
+          </div>
+          <div id="journeyPercent" class="percent-pill">0%</div>
+        </div>
+        <div class="progress-track large"><div id="journeyFill"></div></div>
+        <div id="nextGoals" class="goal-list"></div>
+        <button class="primary-button" data-go="adventureView">Continue Adventure <span aria-hidden="true">→</span></button>
+      </section>
+
+      <div id="homeStats" class="stats-grid"></div>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <div><p class="section-label">REGIONS</p><h2>Your journey</h2></div>
+          <span class="subtle">1 available</span>
+        </div>
+        <div id="areaCards" class="region-grid"></div>
+      </section>
+    </section>
+
+    <section id="adventureView" class="view">
+      <div class="page-intro"><p class="section-label">ADVENTURE</p><h2>Explore by region</h2><p>Choose a region, then mark Pals as you catch them.</p></div>
+      <div class="toolbar-card">
+        <label class="field"><span>Region</span><div class="select-wrap"><select id="areaSelect"></select></div></label>
+        <label class="field"><span>Find a Pal</span><input id="palSearch" type="search" placeholder="Search this region" autocomplete="off"></label>
+        <div class="area-progress">
+          <div><strong id="areaProgressLabel">0 of 0 Pals caught</strong><span id="areaPercent">0%</span></div>
+          <div class="progress-track"><div id="areaProgressFill"></div></div>
+        </div>
+      </div>
+      <div class="section-heading list-heading"><div><p class="section-label">PAL CHECKLIST</p><h2 id="palsTitle">Windswept Hills</h2></div></div>
+      <div id="palList" class="item-list"></div>
+    </section>
+
+    <section id="mapView" class="view">
+      <div class="page-intro"><p class="section-label">DISCOVERIES</p><h2>Places worth finding</h2><p>A lightweight discovery log until the interactive map is ready.</p></div>
+      <div class="toolbar-card two-column">
+        <label class="field"><span>Region</span><div class="select-wrap"><select id="mapAreaSelect"></select></div></label>
+        <label class="field"><span>Type</span><div class="select-wrap"><select id="markerFilter"></select></div></label>
+      </div>
+      <div id="markerList" class="item-list"></div>
+    </section>
+
+    <section id="journeyView" class="view">
+      <div class="page-intro"><p class="section-label">YOUR JOURNEY</p><h2>Progress at a glance</h2></div>
+      <div id="progressStats" class="stats-grid"></div>
+      <section class="card"><h3>Completion by region</h3><div id="progressAreas" class="progress-area-list"></div></section>
+      <section class="card settings-panel"><h3>Save data</h3><p>Export a backup before clearing browser data or switching devices.</p><div class="button-stack"><button id="exportButton" class="secondary-button">Export backup</button><label class="secondary-button file-button">Import backup<input id="importInput" type="file" accept="application/json"></label><button id="resetButton" class="danger-button">Reset progress</button></div></section>
+    </section>
+
+    <section id="settingsView" class="view">
+      <div class="page-intro"><p class="section-label">SETTINGS</p><h2>Make Eolas yours</h2></div>
+      <section class="card"><h3>Theme</h3><p class="supporting-copy">Choose the mood that feels easiest to use while playing.</p><div id="themeGrid" class="theme-grid"></div></section>
+      <section class="card"><h3>Accessibility</h3>
+        <label class="toggle-row"><span><strong>Large text</strong><small>Increase type size and touch targets.</small></span><input id="largeText" type="checkbox"><span class="switch" aria-hidden="true"></span></label>
+        <label class="toggle-row"><span><strong>Reduced motion</strong><small>Remove smooth movement and transitions.</small></span><input id="reducedMotion" type="checkbox"><span class="switch" aria-hidden="true"></span></label>
+        <label class="toggle-row"><span><strong>High contrast</strong><small>Strengthen borders and text contrast.</small></span><input id="highContrast" type="checkbox"><span class="switch" aria-hidden="true"></span></label>
+      </section>
+      <section class="card release-note"><p class="section-label">PLAYTEST BUILD</p><h3>Alpha 0.3</h3><p>Modernized visual system, repaired region and theme controls, and improved spacing throughout.</p></section>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Primary navigation">
+    <button class="active" data-view="homeView"><span>✦</span><small>Home</small></button>
+    <button data-view="adventureView"><span>◇</span><small>Adventure</small></button>
+    <button data-view="mapView"><span>⌖</span><small>Discoveries</small></button>
+    <button data-view="journeyView"><span>◔</span><small>Journey</small></button>
+    <button data-view="settingsView"><span>⚙</span><small>Settings</small></button>
+  </nav>
+  <div id="toast" class="toast hidden" role="status"></div>
+  <script src="data.js?v=03"></script><script src="app.js?v=03"></script>
+</body></html>

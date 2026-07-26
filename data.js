@@ -1,9 +1,22 @@
 window.PALWORLD_DATA = {
   areas: [
-    "Windswept Hills", "Marsh Island", "Eastern Wild Island", "Sea Breeze Archipelago",
-    "Ice Wind Island", "Forgotten Island", "Moonless Shore", "Bamboo Groves",
-    "Verdant Brook", "Twilight Dunes", "Mount Obsidian", "Dessicated Desert",
-    "Astral Mountains", "Sakurajima", "Feybreak", "Sunlit Isle", "World Tree"
+    { name: "Windswept Hills", status: "ready", subtitle: "Starting region" },
+    { name: "Marsh Island", status: "planned", subtitle: "Data pack coming soon" },
+    { name: "Eastern Wild Island", status: "planned", subtitle: "Data pack coming soon" },
+    { name: "Sea Breeze Archipelago", status: "planned", subtitle: "Data pack coming soon" },
+    { name: "Ice Wind Island", status: "planned", subtitle: "Data pack coming soon" },
+    { name: "Forgotten Island", status: "planned", subtitle: "Data pack coming soon" },
+    { name: "Moonless Shore", status: "planned", subtitle: "Data pack coming soon" },
+    { name: "Bamboo Groves", status: "planned", subtitle: "Data pack coming soon" },
+    { name: "Verdant Brook", status: "planned", subtitle: "Data pack coming soon" },
+    { name: "Twilight Dunes", status: "planned", subtitle: "Data pack coming soon" },
+    { name: "Mount Obsidian", status: "planned", subtitle: "Data pack coming soon" },
+    { name: "Dessicated Desert", status: "planned", subtitle: "Data pack coming soon" },
+    { name: "Astral Mountains", status: "planned", subtitle: "Data pack coming soon" },
+    { name: "Sakurajima", status: "planned", subtitle: "Data pack coming soon" },
+    { name: "Feybreak", status: "planned", subtitle: "Data pack coming soon" },
+    { name: "Sunlit Isle", status: "planned", subtitle: "Data pack coming soon" },
+    { name: "World Tree", status: "planned", subtitle: "Data pack coming soon" }
   ],
   markerTypes: ["All", "Lifmunk Effigy", "Egg Spawn", "Fast Travel", "Alpha Boss", "Dungeon", "Skill Fruit Tree", "Journal", "Other"],
   areaPals: {
