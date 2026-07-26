@@ -1,4 +1,4 @@
-# Eolas Companion — Alpha 0.5.4
+# Eolas Companion — Alpha 0.5.5
 
 Mobile-first Palworld companion playtest build.
 
@@ -13,3 +13,5 @@ Mobile-first Palworld companion playtest build.
 - Corrected Beegarde to Pal #67 from alpha feedback
 
 Upload the files in this package to the repository root, replacing the existing app files.
+
+- Missing-Pal goals now show the nearest fast travel point, coordinates, target location, and route instructions.
