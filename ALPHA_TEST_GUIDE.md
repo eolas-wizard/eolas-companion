@@ -1,20 +1,8 @@
-# Eolas Alpha Test Guide
+# Alpha 0.5.4 Test Guide
 
-Use the optional Alpha Notebook in **Settings → Enable Alpha Notebook**, then open **Journey**.
-
-The most useful observations answer one of these questions:
-
-1. Did Eolas replace a web search?
-2. What information did you expect to find?
-3. Did reaching the answer take too many taps?
-4. Did anything behave differently than expected?
-5. Did the app interrupt your focus on the game?
-6. Did anything feel delightful or especially helpful?
-7. What did you ignore?
-8. Did any screen feel overwhelming?
-9. Did you trust the guidance?
-10. After reading a page, what was your next question?
-
-Specific, natural reactions are more valuable than formal bug reports. Example:
-
-> I opened Dumud and expected fishing locations and bait requirements under How to Obtain. I had to search online instead.
+1. Open Current Journey and tap each suggested task.
+2. Open Dinossom, then tap Dinossom Lux and return through the Base variant.
+3. Try at least two variant themes in Settings.
+4. Add notes using the floating **+ Note** button.
+5. Export active notes, then archive the playtest and confirm the active list clears.
+6. Expand Archived playtests and confirm the notes remain available.

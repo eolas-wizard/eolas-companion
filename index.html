@@ -83,16 +83,17 @@
       <div id="progressStats" class="stats-grid"></div>
       <section class="card"><h3>Completion by region</h3><div id="progressAreas" class="progress-area-list"></div></section>
       <section id="alphaNotebookPanel" class="card notebook-panel">
-        <div class="section-heading"><div><p class="section-label">ALPHA NOTEBOOK</p><h3>Capture what happens while you play</h3></div><span class="privacy-badge">On this device</span></div>
+        <div class="section-heading"><div><p class="section-label">ALPHA NOTEBOOK</p><h3>Active feedback <span id="activeNoteCount" class="count-badge">0</span></h3></div><span class="privacy-badge">On this device</span></div>
         <p class="supporting-copy">Record friction, missing information, delightful moments, and the next question Eolas should answer.</p>
         <form id="notebookForm" class="notebook-form">
           <input id="noteSession" type="hidden" value="">
           <input id="noteType" type="hidden" value="Observation">
           <label class="field"><span>Observation</span><textarea id="noteText" rows="3" placeholder="What did you notice?"></textarea></label>
           <input id="noteHelp" type="hidden" value="">
-          <div class="notebook-actions"><button class="primary-button" type="submit">Save note</button><button id="exportNotebook" class="secondary-button" type="button">Export notebook</button></div>
+          <div class="notebook-actions"><button class="primary-button" type="submit">Save note</button><button id="exportNotebook" class="secondary-button" type="button">Export active notes</button><button id="archiveNotebook" class="secondary-button" type="button">Archive playtest</button></div>
         </form>
         <div id="notebookEntries" class="notebook-entries"></div>
+        <details class="archive-library"><summary>Archived playtests</summary><div id="notebookArchives"></div></details>
       </section>
       <section class="card settings-panel"><h3>Save data</h3><p>Export a backup before clearing browser data or switching devices.</p><div class="button-stack"><button id="exportButton" class="secondary-button">Export backup</button><label class="secondary-button file-button">Import backup<input id="importInput" type="file" accept="application/json"></label><button id="resetButton" class="danger-button">Reset progress</button></div></section>
     </section>
@@ -106,7 +107,7 @@
         <label class="toggle-row"><span><strong>Reduced motion</strong><small>Remove smooth movement and transitions.</small></span><input id="reducedMotion" type="checkbox"><span class="switch" aria-hidden="true"></span></label>
         <label class="toggle-row"><span><strong>High contrast</strong><small>Strengthen borders and text contrast.</small></span><input id="highContrast" type="checkbox"><span class="switch" aria-hidden="true"></span></label>
       </section>
-      <section class="card release-note"><p class="section-label">PLAYTEST BUILD</p><h3>Alpha 0.5.3</h3><p>Stability hotfix and one-tap Alpha Notes.</p></section>
+      <section class="card release-note"><p class="section-label">PLAYTEST BUILD</p><h3>Alpha 0.5.4</h3><p>Knowledge cards, linked variants, actionable journey goals, and notebook archives.</p></section>
     </section>
   </main>
 

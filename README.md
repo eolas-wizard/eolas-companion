@@ -1,11 +1,15 @@
-# Eolas Companion — Alpha 0.5.3 Hotfix
+# Eolas Companion — Alpha 0.5.4
 
-Stable flat-file mobile release. Upload every file and the `icons` folder to the repository root.
+Mobile-first Palworld companion playtest build.
 
-## Changes
-- Restores the last stable Alpha 0.5.2 application baseline.
-- Adds a persistent **+ Note** button available from every screen.
-- Notes need only one text field; context is captured automatically.
-- Alpha Notebook is always available on Journey and no longer requires Settings.
-- Adds Beegarde Pal No. 050.
-- Unregisters older service workers and clears stale Eolas caches to prevent mixed-version breakage.
+## This build
+
+- Actionable Current Journey cards
+- One-tap Alpha Notes
+- Active-note count and collapsible playtest archives
+- Linked Pal variants
+- Variant-inspired themes
+- Expanded Pal facts: food, base stats, work suitability, drops, partner skill, and acquisition guidance
+- Corrected Beegarde to Pal #67 from alpha feedback
+
+Upload the files in this package to the repository root, replacing the existing app files.
