@@ -1,37 +1,44 @@
-# Palworld Companion
+# Eolas Companion – Project Brief
 
-A phone-first, installable Palworld progress companion designed for play beside a Steam Deck or TV setup.
+## Vision
+**Play More. Research Less.**
 
-## Included in this release
+Eolas Companion is an accessibility-first adventure companion that helps players spend more time enjoying games and less time researching mechanics.
 
-- Pal checklist organized by map area
-- Search within an area
-- Map-marker checklist for Lifmunk Effigies, eggs, fast travel, Alpha bosses, dungeons, Skill Fruit Trees, journals, and custom discoveries
-- Completion dashboard and per-area progress
-- Local offline storage
-- JSON backup export/import
-- Installable Progressive Web App
-- GitHub Pages compatible with no build tools
+## Brand
+- Name: Eolas Companion
+- Landing: Choose Your Adventure
+- Logo concept: Compass with a North Star/sparkle as true north.
+- Default theme: North Star
 
-## Publish from a phone
+## Core Principles
+- Simple
+- Guided
+- Accessible
+- Completion Friendly
+- Discovery over spoilers
 
-1. Extract the release ZIP in your phone's Files app.
-2. Open your GitHub repository in a browser.
-3. Choose **Add file → Upload files**.
-4. Upload the files and the `icons` folder to the repository root.
-5. Commit the upload to `main`.
-6. Open **Settings → Pages**.
-7. Under **Build and deployment**, choose **Deploy from a branch**.
-8. Select `main` and `/ (root)`, then save.
+## Initial Navigation
+- Home
+- Adventure
+- Guide
+- Journey
+- Settings
 
-Your site should appear at:
+## Palworld Milestone 1
+- Complete Pal database (no typing)
+- Area-based progress
+- Journey Cards
+- Theme system
+- Accessibility settings
+- Offline support
+- Import/Export
 
-`https://eolas-wizard.github.io/palworld-companion/`
+## Long-term Architecture
+Core Engine + Companion Packs (Palworld, Stardew Valley, Monster Hunter, No Man's Sky, etc.)
 
-## Data note
-
-The bundled game data is intentionally a starter dataset. Empty areas remain available for custom entries instead of being filled with unverified information.
-
-## License
-
-MIT, matching the repository license.
+## Product Manifesto
+We believe games should be explored—not researched.
+We believe players shouldn't need dozens of browser tabs.
+We believe completion should feel satisfying, not overwhelming.
+Every feature should help players spend more time playing and less time searching.
