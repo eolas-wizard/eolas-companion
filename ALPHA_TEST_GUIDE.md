@@ -1,8 +1,11 @@
-# Alpha 0.5.4 Test Guide
+# Alpha 0.5.7 Playtest
 
-1. Open Current Journey and tap each suggested task.
-2. Open Dinossom, then tap Dinossom Lux and return through the Base variant.
-3. Try at least two variant themes in Settings.
-4. Add notes using the floating **+ Note** button.
-5. Export active notes, then archive the playtest and confirm the active list clears.
-6. Expand Archived playtests and confirm the notes remain available.
+1. Open **Bases** in the bottom navigation.
+2. Open each preloaded profile and rename it.
+3. Edit coordinates, fast travel, role, local intel, imports, exports, and activities.
+4. Save, close the app, and reopen it to confirm the profiles persist.
+5. Plan one empty base slot from scratch.
+6. Use **+ Note** whenever a missing field or awkward workflow interrupts planning.
+
+## New test
+Open each base profile, change its role, expand candidate intelligence, and adopt a location. Confirm the coordinates and details populate without changing the custom base name. Field-check suggestions before permanently building.
