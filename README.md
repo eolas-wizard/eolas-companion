@@ -1,22 +1,40 @@
-# Eolas Companion — Alpha 0.5.7 Base Network
+# Eolas
 
-Mobile-first Palworld companion playtest build.
+### *Inspired by the legendary strategy guides of the past. Designed for the adventures of today.*
 
-## New in this build
+> **Play More. Research Less.**
 
-- Base Network tab with four editable base-profile slots
-- User-defined base names
-- Editable role, coordinates, status, nearby fast travel, and planning notes
-- Area-intelligence fields for natural resources, build space, raid exposure, and nearby activities
-- Selectable structure/activity tags
-- Imports and exports for each specialized base
-- Preloaded HQ at 646, 272 near Secluded Cemetery, with two oil nodes treated as a secondary HQ resource
-- Preloaded breeding candidate at -418, -833
-- Mining and Farm/Food slots ready to plan
-- Base data included in Eolas backup export/import
+Eolas is an interactive strategy guide for Palworld.
 
-Upload the files in this package to the repository root, replacing the existing app files.
+## Mission
 
-- Role-based candidate coordinates for HQ, Breeding, Mining, and Farm/Food
-- Expandable intelligence cards with score, tradeoffs, and source type
-- One-tap Adopt action that fills the profile while preserving custom naming
+Create the strategy guide we always wished existed.
+
+## Design Principles
+
+### The Guide Knows
+Universal game knowledge belongs in Eolas.
+
+### The Player Knows
+Only ask players for information unique to their adventure.
+
+## The Eolas Test
+
+Every feature must:
+- Help during gameplay
+- Reduce outside research
+- Respect the player's time
+- Feel like a premium strategy guide
+- Avoid unnecessary manual tracking
+
+## What Eolas Is
+- Interactive strategy guide
+- Planning companion
+- World atlas
+- Base intelligence
+
+## What Eolas Isn't
+- Checklist app
+- Wiki clone
+- Spreadsheet
+- Busywork
