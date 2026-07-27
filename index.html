@@ -135,7 +135,7 @@ main{padding-bottom:120px}.app-header{backdrop-filter:blur(18px);background:colo
 .page-intro h2{font-size:clamp(30px,7vw,42px);letter-spacing:-.045em}.section-heading h2{letter-spacing:-.035em}
 .chapter-no{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:900;letter-spacing:.18em;color:var(--brand)}
 .chapter-no:after{content:"";width:34px;height:1px;background:var(--brand)}
-.bottom-nav{left:7px;right:7px;bottom:8px;border:1px solid var(--line);border-radius:22px;padding:7px;background:color-mix(in srgb,var(--surface) 92%,transparent);box-shadow:0 18px 50px rgba(0,0,0,.22);backdrop-filter:blur(20px);grid-template-columns:repeat(6,1fr)}
+.bottom-nav{left:7px;right:7px;bottom:8px;transform:none;width:auto;border:1px solid var(--line);border-radius:22px;padding:7px;background:color-mix(in srgb,var(--surface) 92%,transparent);box-shadow:0 18px 50px rgba(0,0,0,.22);backdrop-filter:blur(20px);grid-template-columns:repeat(6,1fr)}
 .bottom-nav button{min-width:0;border-radius:15px}.bottom-nav button small{font-size:8px}
 .base-grid{display:grid;gap:14px}.base-card{padding:18px;border:1px solid var(--line);border-radius:20px;background:var(--surface);box-shadow:var(--shadow-soft)}
 .base-card header{display:flex;justify-content:space-between;gap:12px}.base-card h3{margin:0;font-size:20px}.base-card p{color:var(--muted);line-height:1.45}
@@ -155,8 +155,18 @@ main{padding-bottom:120px}.app-header{backdrop-filter:blur(18px);background:colo
 .pal-avatar.large .avatar-letter{font-size:12px;right:7px;bottom:5px}.profile-source{font-size:11px;color:var(--muted)}
 .data-note{padding:13px 15px;border-radius:15px;background:var(--brand-soft);font-size:12px;line-height:1.5;margin-bottom:16px}
 
+
+/* 0.6.2 visible home revision */
+.build-ribbon{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:4px 0 14px;padding:10px 12px;border:1px solid color-mix(in srgb,var(--brand) 35%,var(--line));border-radius:14px;background:linear-gradient(90deg,var(--brand-soft),var(--surface));font-size:11px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.hero-card.guide-cover{position:relative;overflow:hidden;min-height:255px;padding:28px;background:linear-gradient(145deg,color-mix(in srgb,var(--brand) 72%,#122037),color-mix(in srgb,var(--brand-2) 76%,#0f1728));color:#fff;border:0}
+.hero-card.guide-cover:before{content:"";position:absolute;inset:-30% -20% auto auto;width:230px;height:230px;border:1px solid rgba(255,255,255,.16);border-radius:50%;box-shadow:0 0 0 34px rgba(255,255,255,.05),0 0 0 68px rgba(255,255,255,.035)}
+.hero-card.guide-cover .eyebrow{color:rgba(255,255,255,.72)}.hero-card.guide-cover h2{font-size:clamp(38px,10vw,60px);line-height:.94;max-width:8ch;letter-spacing:-.06em;margin:10px 0 14px}.hero-card.guide-cover p{color:rgba(255,255,255,.82);max-width:34ch}.guide-cover-mark{position:absolute;right:23px;bottom:20px;font-size:72px;color:rgba(255,255,255,.17)}
+.quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0 22px}.quick-card{min-height:112px;padding:16px;border-radius:20px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-align:left;box-shadow:var(--shadow-soft)}.quick-card span{display:block;font-size:25px;margin-bottom:18px;color:var(--brand)}.quick-card strong{display:block;font-size:16px}.quick-card small{display:block;color:var(--muted);margin-top:4px;line-height:1.3}
+.journey-card{border-left:5px solid var(--brand)}
+.region-card:not(.disabled){position:relative;overflow:hidden}.region-card:not(.disabled):after{content:"FIELD GUIDE";position:absolute;right:14px;top:9px;font-size:8px;letter-spacing:.14em;font-weight:900;color:color-mix(in srgb,var(--brand) 65%,transparent)}
+
 </style>
-  <title>Eolas Companion · 0.6.1 Mobile Playtest</title>
+  <title>Eolas Companion · 0.6.2 Visual Revision</title>
 </head>
 <body>
   <header class="app-header">
@@ -165,7 +175,7 @@ main{padding-bottom:120px}.app-header{backdrop-filter:blur(18px);background:colo
       <div>
         <p class="eyebrow">EOLAS COMPANION</p>
         <h1>Palworld</h1>
-        <p class="pack-version">Guidebook Revision 0.6.1</p>
+        <p class="pack-version">Visual Revision 0.6.2</p>
       </div>
     </div>
     <button id="installButton" class="icon-button hidden" type="button">Install</button>
@@ -173,13 +183,20 @@ main{padding-bottom:120px}.app-header{backdrop-filter:blur(18px);background:colo
 
   <main>
     <section id="homeView" class="view active">
-      <div class="hero-card">
+      <div class="build-ribbon"><span>Eolas Visual Revision</span><span>0.6.2</span></div>
+      <div class="hero-card guide-cover">
         <div>
-          <p class="eyebrow">CHOOSE YOUR ADVENTURE</p>
-          <h2>Ready to continue?</h2>
-          <p>Pick up where you left off without leaving the game to search.</p>
+          <p class="eyebrow">THE INTERACTIVE PALWORLD GUIDE</p>
+          <h2>Play more. Research less.</h2>
+          <p>A modern companion organized like the strategy guides you loved—without turning your game session into homework.</p>
         </div>
-        <div class="northstar" aria-hidden="true">✦</div>
+        <div class="guide-cover-mark" aria-hidden="true">✦</div>
+      </div>
+      <div class="quick-grid">
+        <button class="quick-card" data-go="adventureView"><span>◇</span><strong>Pal Field Guide</strong><small>Browse nine regional chapters.</small></button>
+        <button class="quick-card" data-go="basesView"><span>⌂</span><strong>Base Network</strong><small>Plan production and outposts.</small></button>
+        <button class="quick-card" data-go="mapView"><span>⌖</span><strong>World Guide</strong><small>Discoveries and guide index.</small></button>
+        <button class="quick-card" data-go="journeyView"><span>✎</span><strong>Field Journal</strong><small>Notes, variations, and feedback.</small></button>
       </div>
 
       <section class="card journey-card">
@@ -273,7 +290,7 @@ main{padding-bottom:120px}.app-header{backdrop-filter:blur(18px);background:colo
         <label class="toggle-row"><span><strong>Reduced motion</strong><small>Remove smooth movement and transitions.</small></span><input id="reducedMotion" type="checkbox"><span class="switch" aria-hidden="true"></span></label>
         <label class="toggle-row"><span><strong>High contrast</strong><small>Strengthen borders and text contrast.</small></span><input id="highContrast" type="checkbox"><span class="switch" aria-hidden="true"></span></label>
       </section>
-      <section class="card release-note"><p class="section-label">PLAYTEST BUILD</p><h3>Guidebook Revision 0.6.1</h3><p>Corrective mobile playtest: restored Bases, Settings, themes, contextual feedback, expanded regional chapters, and modern guide styling.</p></section>
+      <section class="card release-note"><p class="section-label">PLAYTEST BUILD</p><h3>Visual Revision 0.6.2</h3><p>Corrective mobile playtest: restored Bases, Settings, themes, contextual feedback, expanded regional chapters, and modern guide styling.</p></section>
     </section>
   </main>
 
@@ -529,7 +546,7 @@ window.PALWORLD_DATA = {
   $$('[data-go]').forEach(b=>b.addEventListener('click',()=>switchView(b.dataset.go)));
   els.areaSelect.addEventListener('change',renderPals); els.mapAreaSelect.addEventListener('change',renderMarkers); els.markerFilter.addEventListener('change',renderMarkers); els.palSearch.addEventListener('input',renderPals);
   ["largeText","reducedMotion","highContrast","alphaNotebookEnabled"].forEach(k=>$("#"+k).addEventListener("change",e=>{state[k]=e.target.checked;save();applyPrefs();renderJourney();if(k==="alphaNotebookEnabled"){toast(e.target.checked?"Opening Field Journal":"Field Journal hidden");if(e.target.checked){switchView("journeyView");requestAnimationFrame(()=>setTimeout(()=>$("#alphaNotebookPanel")?.scrollIntoView({block:"start",behavior:"auto"}),40));}}}));
-  $("#exportButton").addEventListener("click",()=>{const blob=new Blob([JSON.stringify({version:"platform-alpha-0.6.1",pack:{id:"palworld",version:"0.1.0"},exportedAt:new Date().toISOString(),state},null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="eolas-companion-backup.json";a.click();URL.revokeObjectURL(a.href);});
+  $("#exportButton").addEventListener("click",()=>{const blob=new Blob([JSON.stringify({version:"visual-revision-0.6.2",pack:{id:"palworld",version:"0.1.0"},exportedAt:new Date().toISOString(),state},null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="eolas-companion-backup.json";a.click();URL.revokeObjectURL(a.href);});
   $("#importInput").addEventListener("change",async e=>{try{const p=JSON.parse(await e.target.files[0].text());state={...defaults,...p.state,checked:{...(p.state?.checked||{})},palProgress:{...(p.state?.palProgress||{})},notebookEntries:Array.isArray(p.state?.notebookEntries)?p.state.notebookEntries:[]};save();applyPrefs();setupControls();renderAll();toast("Backup imported");}catch{alert("That backup could not be imported.");}});
   $("#resetButton").addEventListener("click",()=>{if(confirm("Reset all Eolas progress on this device?")){state={...defaults,checked:{},palProgress:{},notebookEntries:[]};save();applyPrefs();setupControls();renderAll();toast("Progress reset");}});
 
