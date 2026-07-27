@@ -4,37 +4,45 @@
 
 > **Play More. Research Less.**
 
-Eolas is an interactive strategy guide for Palworld.
+Eolas is an interactive strategy guide for **Palworld**. It brings regional guidance, Pal obtainment information, discoveries, personal notes, and planning context into a companion designed to stay useful during play.
 
-## Mission
+## Run the playtest build
 
-Create the strategy guide we always wished existed.
+Open `index.html` in a modern browser. The build is intentionally self-contained for easy mobile testing and GitHub Pages deployment.
 
-## Design Principles
+## 0.6.0 — Guidebook
+
+This milestone changes the presentation from a generic app dashboard into a chapter-based digital strategy guide.
+
+### Included
+
+- Bookmark-style **Continue Adventure** home
+- **Table of Contents**
+- Regional content presented as **chapters**
+- **Field Journal** terminology and navigation
+- Guidebook typography, dividers, and reading hierarchy
+- Existing regional themes preserved
+- Existing Pal, discovery, progress, settings, accessibility, import, and export functions preserved
+
+## Product principles
 
 ### The Guide Knows
-Universal game knowledge belongs in Eolas.
 
-### The Player Knows
-Only ask players for information unique to their adventure.
+Eolas provides universal game knowledge such as Pal locations, obtainment methods, regional discoveries, resources, and landmarks.
 
-## The Eolas Test
+### The Player Decides
 
-Every feature must:
-- Help during gameplay
-- Reduce outside research
-- Respect the player's time
-- Feel like a premium strategy guide
-- Avoid unnecessary manual tracking
+Players record only information unique to their adventure, such as personal notes, goals, and preferences.
 
-## What Eolas Is
-- Interactive strategy guide
-- Planning companion
-- World atlas
-- Base intelligence
+### Respect the player's time
 
-## What Eolas Isn't
-- Checklist app
-- Wiki clone
-- Spreadsheet
-- Busywork
+A strategy guide should make the adventure richer without becoming another task to maintain.
+
+## Milestones
+
+- **0.6.0 — Guidebook**
+- **0.6.1 — World Atlas**
+- **0.6.2 — Base Intelligence**
+- **0.7.0 — Completionist**
+- **0.8.0 — Operations**
+- **1.0 — Eolas**

@@ -1,24 +1,28 @@
-# Design
+# Design Constitution
 
-## UI Philosophy
+## Publication architecture
 
-Modern guidebook, not dashboard.
+Eolas is organized like a living publication:
 
-## Navigation
+1. Cover / bookmark
+2. Table of contents
+3. Regional chapters
+4. Reference entries
+5. Personal margins
 
-Continue Adventure
-Guide
-Planner
-Field Journal
+## Visual rules
 
-## Information Hierarchy
+- Preserve user-selectable themes.
+- Use a consistent reading hierarchy across every theme.
+- Prefer headings, dividers, margins, and whitespace over nested cards.
+- Use serif typography for chapter titles and sans-serif typography for body copy.
+- Keep controls recognizable and touch-friendly.
+- Never let atmosphere reduce readability.
 
-Title
-Summary
-Key Information
-Details
-Reference
+## Information order
 
-## Regional Themes
-
-Preserve regional identity while maintaining a consistent guidebook layout.
+1. Page purpose
+2. Immediate answer
+3. Actionable guidance
+4. Supporting detail
+5. Reference information

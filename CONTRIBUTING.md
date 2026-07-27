@@ -1,8 +1,12 @@
 # Contributing
 
-Before submitting changes ask:
+Before adding or changing a feature, confirm that it:
 
-- Does this reduce research?
-- Does it respect the player's time?
-- Does it reduce manual tracking?
-- Does it improve the guide experience?
+- Helps during active play
+- Reduces outside research
+- Avoids unnecessary manual tracking
+- Respects the player's time
+- Fits a premium strategy guide
+- Preserves useful theme and accessibility behavior
+
+Playtesting, not assumptions, decides what stays.
