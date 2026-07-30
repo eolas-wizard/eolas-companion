@@ -24,3 +24,9 @@
 - Local progress
 - Import/export
 - Accessibility settings
+
+## 0.6.3 — Feedback reliability hotfix
+- Restored the feedback drawer to a simple, non-sticky bottom sheet layout.
+- Added explicit button types to contextual feedback controls, including Base Network actions.
+- Added visible validation when feedback text is empty.
+- Hardened local Field Journal saving and surfaced storage failures instead of failing silently.
